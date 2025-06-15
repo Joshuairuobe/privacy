@@ -1,137 +1,66 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Veritas Nexus Global Ltd</title>
-  <link rel="stylesheet" href="homepage.css" />
-  <!-- Google Fonts for a modern clean look -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
-</head>
-<body>
+/* Layout container for nav and content */
+body {
+  display: flex;
+  min-height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
 
-  <!-- Sidebar navigation (hidden by default) -->
-  <nav class="side-nav" id="sideNav">
-    <button class="menu-close" id="menuCloseBtn" aria-label="Close menu">&times;</button>
-    <ul>
-      <li class="dropdown">
-        <a href="#">Services &#x25BC;</a>
-        <ul class="dropdown-menu">
-          <li><a href="#">Consulting</a></li>
-          <li><a href="#">Development</a></li>
-          <li><a href="#">Design</a></li>
-          <li><a href="#">Support</a></li>
-          <li><a href="#">Data Security Planning</a></li>
-          <li><a href="#">Security Management</a></li>
-        </ul>
-      </li>
-      <li><a href="#">Products</a></li>
-      <li><a href="blog.html">Blog</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="terms.html">Terms & Privacy</a></li>
-    </ul>
-  </nav>
+/* Sidebar styles */
+.nav-header {
+  flex-shrink: 0;
+  width: 220px; /* fixed sidebar width */
+  background-color: #1a1a1a; /* dark background */
+  color: white;
+  height: 100vh;
+  position: fixed; /* fixed sidebar */
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1rem;
+  box-sizing: border-box;
+}
 
-  <!-- Top Navigation -->
-  <nav class="navbar">
-    <div class="container">
-      <!-- Logo is now a toggle for sidebar -->
-      <a href="javascript:void(0)" id="logoToggle" class="logo" aria-label="Open menu">
-        <img src="veritas 2.jpg" alt="Veritas Nexus Logo" height="40" />
-      </a>
-      <!-- Hide nav links on small screens, shown only on larger screens -->
-      <ul class="nav-links">
-        <li class="dropdown">
-          <a href="#">Services &#x25BC;</a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Consulting</a></li>
-            <li><a href="#">Development</a></li>
-            <li><a href="#">Design</a></li>
-            <li><a href="#">Support</a></li>
-            <li><a href="#">Data Security Planning</a></li>
-            <li><a href="#">Security Management</a></li>
-          </ul>
-        </li>
-        <li><a href="#">Products</a></li>
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="terms.html">Terms & Privacy</a></li>
-      </ul>
-    </div>
-  </nav>
+.nav-logo img {
+  width: 150px;
+  margin-bottom: 2rem;
+}
 
-  <!-- Header Section with Background Image -->
-  <header class="header">
-    <div class="header-overlay">
-      <div class="header-content container">
-        <h1>Welcome to Veritas Nexus Global Ltd</h1>
-        <p>Innovating technology solutions for tomorrow.</p>
-        <a href="getstarted.html" class="btn-primary">Get Started</a>
-      </div>
-    </div>
-  </header>
+/* Sidebar nav */
+.nav-links.sidebar {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 0;
+  margin: 0;
+}
 
-  <!-- Main Content -->
-  <main class="container main-content">
-    <section>
-      <h2>How We Started</h2>
-      <p>
-        Founded in 2025, Veritas Nexus Global began as a small team of passionate innovators dedicated to bridging technology and business.
-      </p>
-    </section>
+.nav-links.sidebar a {
+  color: white;
+  padding: 12px 20px;
+  text-decoration: none;
+  display: block;
+  border-left: 4px solid transparent;
+  transition: background-color 0.3s, border-color 0.3s;
+}
 
-    <section>
-      <h2>Our Mission</h2>
-      <p>
-        To empower organizations worldwide with cutting-edge, scalable, and sustainable technology solutions that drive progress.
-      </p>
-    </section>
+.nav-links.sidebar a:hover,
+.nav-links.sidebar a:focus {
+  background-color: #333;
+  border-left: 4px solid #4caf50; /* highlight color */
+}
 
-    <section>
-      <h2>Our Vision</h2>
-      <p>
-        To be the global leader in tech innovation, inspiring transformation and creating value for all stakeholders.
-      </p>
-    </section>
-  </main>
+/* Adjust main content to avoid being under sidebar */
+main.container, header.header, footer.footer {
+  margin-left: 220px; /* same width as sidebar */
+  padding: 1rem 2rem;
+  max-width: calc(100% - 220px);
+  box-sizing: border-box;
+}
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container footer-content">
-      <div>
-        <p>© 2025 Veritas Nexus Global Ltd. All rights reserved.</p>
-        <nav>
-          <a href="terms.html">Terms</a> | <a href="privacy.html">Privacy Policy</a>
-        </nav>
-      </div>
-      <div class="social-icons">
-        <!-- Social Icons here -->
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    // Elements
-    const sideNav = document.getElementById('sideNav');
-    const logoToggle = document.getElementById('logoToggle');
-    const menuCloseBtn = document.getElementById('menuCloseBtn');
-
-    // Open sidebar when logo clicked
-    logoToggle.addEventListener('click', () => {
-      sideNav.classList.add('open');
-    });
-
-    // Close sidebar when close button clicked
-    menuCloseBtn.addEventListener('click', () => {
-      sideNav.classList.remove('open');
-    });
-
-    // Optional: close sidebar when clicking outside of it
-    window.addEventListener('click', (e) => {
-      if (sideNav.classList.contains('open') && !sideNav.contains(e.target) && e.target !== logoToggle) {
-        sideNav.classList.remove('open');
-      }
-    });
-  </script>
-</body>
-</html>
+/* Optional: fix header at top inside main content */
+.header {
+  margin-top: 2rem;
+}
