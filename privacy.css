@@ -1,5 +1,7 @@
 /* privacy.css */
 
+/* --- existing styles --- */
+
 body {
   font-family: 'Inter', sans-serif;
   background: #f6fbff;
@@ -7,6 +9,10 @@ body {
   margin: 0;
   padding: 0;
   line-height: 1.75;
+
+  /* Add flex layout for sidebar + main content */
+  display: flex;
+  min-height: 100vh;
 }
 
 .container {
@@ -17,6 +23,11 @@ body {
   box-shadow: 0 6px 20px rgba(30, 144, 255, 0.15);
   border-radius: 12px;
   border: 2px solid #1e90ff; /* subtle blue border */
+
+  /* Push container to the right of sidebar */
+  margin-left: 220px; /* sidebar width */
+  max-width: calc(900px - 220px);
+  box-sizing: border-box;
 }
 
 h1, h2 {
@@ -60,41 +71,90 @@ footer {
   color: #567dca;
   background: #e8f1ff;
   margin-top: 3rem;
+
+  /* Align footer content with main */
+  margin-left: 220px;
+  box-sizing: border-box;
   border-top: 1px solid #bdd7ff;
 }
-/* Navbar Styles */
+
+/* --- updated sidebar styles --- */
+
 .nav-header {
-  background-color: #111827; /* dark background */
-  padding: 1rem 0;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  position: sticky;
+  /* Make sidebar fixed on the left */
+  position: fixed;
   top: 0;
+  left: 0;
+  height: 100vh; /* full viewport height */
+  width: 220px; /* fixed width */
+  background-color: #111827; /* dark background */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 0;
+  box-sizing: border-box;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
   z-index: 1000;
 }
 
+/* Adjust container inside nav-header */
 .nav-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  padding: 0 1rem;
+  width: 100%;
 }
 
+/* Logo size */
 .nav-logo img {
-  height: 40px;
+  height: 60px;
   width: auto;
+  margin-bottom: 2rem;
+}
+
+/* Sidebar nav links */
+.nav-links {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 0;
+  margin: 0;
 }
 
 .nav-links a {
   color: #e5e7eb; /* light text */
-  margin-left: 1.5rem;
+  padding: 12px 24px;
   text-decoration: none;
   font-weight: 600;
   font-family: 'Inter', sans-serif;
-  transition: color 0.3s ease;
+  border-left: 4px solid transparent;
+  transition: background-color 0.3s ease, border-left-color 0.3s ease;
 }
 
-.nav-links a:hover {
-  color: #3b82f6; /* blue accent on hover */
+.nav-links a:hover,
+.nav-links a:focus {
+  background-color: #1f2937; /* slightly lighter dark */
+  border-left-color: #3b82f6; /* blue accent */
 }
+
+/* Remove previous nav styles */
+.nav-header {
+  padding: 2rem 0;
+  box-shadow: none;
+  position: fixed;
+  justify-content: flex-start;
+}
+
+/* Ensure header and footer margin-left to align with sidebar */
+.header {
+  margin-left: 220px;
+  padding: 1rem 2rem 0 2rem;
+  max-width: calc(100% - 220px);
+  box-sizing: border-box;
+}
+
+/* Optional: Scroll for main content if needed */
+main.container {
+  overflow-y: auto;
+}
+
+/* Remove sticky nav positioning */
