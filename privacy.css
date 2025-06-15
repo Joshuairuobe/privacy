@@ -62,39 +62,3 @@ footer {
   margin-top: 3rem;
   border-top: 1px solid #bdd7ff;
 }
-/* Navbar Styles */
-.nav-header {
-  background-color: #111827; /* dark background */
-  padding: 1rem 0;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-.nav-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 1rem;
-}
-
-.nav-logo img {
-  height: 40px;
-  width: auto;
-}
-
-.nav-links a {
-  color: #e5e7eb; /* light text */
-  margin-left: 1.5rem;
-  text-decoration: none;
-  font-weight: 600;
-  font-family: 'Inter', sans-serif;
-  transition: color 0.3s ease;
-}
-
-.nav-links a:hover {
-  color: #3b82f6; /* blue accent on hover */
-}
